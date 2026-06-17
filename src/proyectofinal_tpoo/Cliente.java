@@ -4,6 +4,8 @@
  */
 package proyectofinal_tpoo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author USUARIO
@@ -12,19 +14,34 @@ public class Cliente extends Persona{
     private String codigoCliente;
     private int puntosAcumulados;
     private String tipoCliente;
-
+    
+    private ArrayList<Venta> ventas;
     public Cliente() {
+        super();
+        this.ventas = new ArrayList<>();
     }
     
     // Constructor con parámetros
-    public Cliente(String codigoCliente,int puntosAcumulados, String tipoCliente) {
+     public Cliente(int idPersona, String tipoDocumento, String nroDocumento,
+                   String appPaterno, String appMaterno, String nombre,
+                   java.util.Date fechaNacimiento, String sexo,
+                   String telefono, String correo, String direccion,
+                   boolean estado,
+                   String codigoCliente, int puntosAcumulados, String tipoCliente) {
+
+        super(idPersona, tipoDocumento, nroDocumento, appPaterno,
+              appMaterno, nombre, fechaNacimiento, sexo,
+              telefono, correo, direccion, estado);
+
         this.codigoCliente = codigoCliente;
         this.puntosAcumulados = puntosAcumulados;
         this.tipoCliente = tipoCliente;
+
+        this.ventas = new ArrayList<>();
     }
+
     
     // Getters y Setters
-
     public String getCodigoCliente() {
         return codigoCliente;
     }
@@ -33,11 +50,11 @@ public class Cliente extends Persona{
         this.codigoCliente = codigoCliente;
     }
 
-    public Integer getPuntosAcumulados() {
+    public int getPuntosAcumulados() {
         return puntosAcumulados;
     }
 
-    public void setPuntosAcumulados(Integer puntosAcumulados) {
+    public void setPuntosAcumulados(int puntosAcumulados) {
         this.puntosAcumulados = puntosAcumulados;
     }
 
@@ -49,16 +66,29 @@ public class Cliente extends Persona{
         this.tipoCliente = tipoCliente;
     }
 
-    // Métodos
-    public void registrarCliente() {
+    public ArrayList<Venta> getVentas() {
+        return ventas;
+    }
 
+    public void setVentas(ArrayList<Venta> ventas) {
+        this.ventas = ventas;
+    }
+    
+    // Métodos
+    public void agregarVenta(Venta venta) {
+        if (venta != null) {
+            ventas.add(venta); 
+        }
+    }
+    public void registrarCliente() {
+          System.out.println("Cliente registrado: " + getNombre());
     }
 
     public void actualizarDatos() {
-
+         System.out.println("Datos del cliente actualizados");
     }
 
-    public Integer consultarPuntos() {
+    public int consultarPuntos() {
         return puntosAcumulados;
     }
 }

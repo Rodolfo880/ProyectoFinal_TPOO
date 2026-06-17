@@ -19,6 +19,7 @@ public class CarritoVenta {
     // Constructor vacío
     public CarritoVenta() {
         productos = new ArrayList<>();
+        cantidadProductos = 0;
     }
     
     // Constructor con parámetros
@@ -43,19 +44,36 @@ public class CarritoVenta {
 
     public void setProductos(ArrayList<Producto> productos) {
         this.productos = productos;
+        this.cantidadProductos = (productos != null) ? productos.size() : 0;
     }
     
      // Métodos del UML
-    public void agregarProducto() {
+    public void agregarProducto(Producto producto) {
+         if (producto != null) {
+            productos.add(producto);
+            cantidadProductos = productos.size(); 
+            System.out.println("Producto agregado: " + producto.getNomProducto());
+        }
     }
 
-    public void eliminarProducto() {
+    public void eliminarProducto(Producto producto) {
+        if (producto != null && productos.remove(producto)) {
+            cantidadProductos = productos.size();
+            System.out.println("Producto eliminado");
+        }
     }
 
     public double calcularTotal() {
-        return 0;
+        double total = 0;
+        for (Producto p : productos) {
+            total += p.getPrecioVenta(); 
+        }
+        return total;
     }
 
     public void vaciarCarrito() {
+         productos.clear();
+        cantidadProductos = 0;
+        System.out.println("Carrito vaciado");
     }
 }

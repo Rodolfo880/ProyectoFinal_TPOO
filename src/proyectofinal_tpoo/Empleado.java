@@ -11,32 +11,41 @@ import java.util.Date;
  *
  * @author USUARIO
  */
-public class Empleado {
+public class Empleado extends Persona{
     private String codigoEmpleado;
     private Date fechaIngreso;
     private String cargo;
-    private Double sueldo;
-    private Boolean estado;
+    private double sueldo;
+    
+    // Relación reflexiva
     private Empleado jefe;
     private ArrayList<Empleado> subordinados;
     
     //Constructor
     public Empleado() {
-        subordinados = new ArrayList<>();
+       super();
+       this.subordinados = new ArrayList<>();
     }
     
-    // Constructor con parámetros
-    public Empleado(String codigoEmpleado, Date fechaIngreso, String cargo,
-                    Double sueldo, Boolean estado, Empleado jefe,
-                    ArrayList<Empleado> subordinados) {
+       public Empleado(int idPersona, String tipoDocumento, String nroDocumento,
+                    String appPaterno, String appMaterno, String nombre,
+                    Date fechaNacimiento, String sexo,
+                    String telefono, String correo, String direccion,
+                    boolean estado,
+                    String codigoEmpleado, Date fechaIngreso,
+                    String cargo, double sueldo, Empleado jefe) {
+
+        super(idPersona, tipoDocumento, nroDocumento, appPaterno,
+              appMaterno, nombre, fechaNacimiento, sexo,
+              telefono, correo, direccion, estado);
 
         this.codigoEmpleado = codigoEmpleado;
         this.fechaIngreso = fechaIngreso;
         this.cargo = cargo;
         this.sueldo = sueldo;
-        this.estado = estado;
         this.jefe = jefe;
-        this.subordinados = subordinados;
+        //Inicializacion
+         this.subordinados = new ArrayList<>();
     }
 
     public String getCodigoEmpleado() {
@@ -63,20 +72,12 @@ public class Empleado {
         this.cargo = cargo;
     }
 
-    public Double getSueldo() {
+    public double getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(Double sueldo) {
+    public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
-    }
-
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
     }
 
     public Empleado getJefe() {
@@ -95,16 +96,17 @@ public class Empleado {
         this.subordinados = subordinados;
     }
     
-    //Metodos
-     public void registrarAsistencia() {
-
+     //Mtodos
+    public void registrarAsistencia() {
+        System.out.println("Asistencia registrada del empleado: " + nombre);
     }
-
-    public Double calcularSueldo() {
+    public double calcularSueldo() {
         return sueldo;
     }
-
     public void mostrarDatosEmpleado() {
-
+        System.out.println("EMPLEADO");
+        mostrarDatos();
+        System.out.println("Cargo: " + cargo);
+        System.out.println("Sueldo: " + sueldo);
     }
 }

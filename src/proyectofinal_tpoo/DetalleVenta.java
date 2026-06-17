@@ -12,15 +12,22 @@ public class DetalleVenta {
     private int cantidad;
     private double precioUnitario;
     private double subtotal;
-    
-    public DetalleVenta() {
-    }
+    // Relación 
+    private Producto producto;
+    public DetalleVenta() {}
 
      // Constructor con parámetros
-    public DetalleVenta(int cantidad, double precioUnitario, double subtotal) {
+    public DetalleVenta(int cantidad, double precioUnitario) {
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
-        this.subtotal = subtotal;
+        this.subtotal = calcularSubtotal();
+    }
+
+    public DetalleVenta(int cantidad, double precioUnitario, Producto producto) {
+        this.cantidad = cantidad;
+        this.precioUnitario = precioUnitario;
+        this.producto = producto;
+        this.subtotal = calcularSubtotal();
     }
 
     // Getters y Setters
@@ -30,6 +37,7 @@ public class DetalleVenta {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+        this.subtotal = calcularSubtotal(); 
     }
 
     public double getPrecioUnitario() {
@@ -38,19 +46,37 @@ public class DetalleVenta {
 
     public void setPrecioUnitario(double precioUnitario) {
         this.precioUnitario = precioUnitario;
+        this.subtotal = calcularSubtotal(); 
     }
 
     public double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     // Método
     public double calcularSubtotal() {
-        return 0;
+        return cantidad * precioUnitario;
     }
 
+    public void mostrarDetalle() {
+
+        System.out.println("DETALLE VENTA");
+
+        if (producto != null) {
+            System.out.println("Producto: " + producto.getNomProducto());
+        } else {
+            System.out.println("Producto: SIN ASIGNAR");
+        }
+        System.out.println("Cantidad: " + cantidad);
+        System.out.println("Precio Unitario: " + precioUnitario);
+        System.out.println("Subtotal: " + subtotal);
+    }
 }

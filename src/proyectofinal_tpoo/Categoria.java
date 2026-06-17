@@ -4,6 +4,8 @@
  */
 package proyectofinal_tpoo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author USUARIO
@@ -13,8 +15,10 @@ public class Categoria {
     private String nombre;
     private String descripcion;
     private boolean estado;
-
+    
+    private ArrayList<Producto> productos;
     public Categoria() {
+        productos = new ArrayList<>();
     }
     
     // Constructor con parámetros
@@ -23,6 +27,8 @@ public class Categoria {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
+
+        this.productos = new ArrayList<>();
     }
 
     // Getters y Setters
@@ -57,17 +63,33 @@ public class Categoria {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(ArrayList<Producto> productos) {
+        this.productos = productos;
+    }
 
     // Métodos
+    public void agregarProducto(Producto producto) { 
+        if (producto != null) {
+            productos.add(producto);
+        }
+    }
     public void registrarCategoria() {
+        System.out.println("Categoría registrada: " + nombre);
     }
 
     public void actualizarCategoria() {
+         System.out.println("Categoría actualizada");
     }
 
     public void eliminarCategoria() {
+        System.out.println("Categoría eliminada");
     }
 
     public void consultarCategoria() {
+        System.out.println("Categoría: " + nombre + " - " + descripcion);
     }
 }

@@ -18,12 +18,13 @@ public class Producto {
     private int stock;
     private int stockMinimo;
 
-     public Producto() {
-    }
+     public Producto() {}
     // Constructor con parámetros
+     
     public Producto(int idProducto, String nomProducto, String marca,
                     double precioCompra, double precioVenta,
                     int stock, int stockMinimo) {
+
         this.idProducto = idProducto;
         this.nomProducto = nomProducto;
         this.marca = marca;
@@ -33,6 +34,7 @@ public class Producto {
         this.stockMinimo = stockMinimo;
     }
 
+    //G y S
     public int getIdProducto() {
         return idProducto;
     }
@@ -91,17 +93,39 @@ public class Producto {
     
       // Métodos
     public void registrar() {
+        if (nomProducto != null && !nomProducto.isEmpty()) {
+            System.out.println("Producto registrado: " + nomProducto);
+        } else {
+            System.out.println("Error: nombre de producto vacío");
+        }
     }
 
     public void actualizar() {
+        if (idProducto > 0) {
+            System.out.println("Producto actualizado: " + nomProducto);
+        } else {
+            System.out.println("Error: producto no válido para actualizar");
+        }
     }
 
     public void eliminar() {
+        if (idProducto > 0) {
+            System.out.println("Producto eliminado: " + nomProducto);
+        } else {
+            System.out.println("Error: no se puede eliminar");
+        }
     }
 
-    public void buscar() {
+    public boolean buscar(String nombreBuscado) {
+        if (nomProducto == null) return false;
+        return nomProducto.equalsIgnoreCase(nombreBuscado);
     }
-
-    public void actualizarStock() {
+    
+    public void actualizarStock(int cantidad) {
+        this.stock += cantidad;
+        if (this.stock < 0) {
+            this.stock = 0;
+        }
+        System.out.println("Stock actualizado: " + stock);
     }
 }

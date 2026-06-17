@@ -11,7 +11,7 @@ import java.util.Date;
  * @author USUARIO
  */
 public class Persona {
-    protected Integer idPersona;
+    protected int idPersona;
     protected String tipoDocumento;
     protected String nroDocumento;
     protected String appPaterno;
@@ -22,15 +22,14 @@ public class Persona {
     protected String telefono;
     protected String correo;
     protected String direccion;
-    protected Boolean estado;
+    protected boolean estado;
 
-    public Persona() {
-    }
+    public Persona() {}
     
-    public Persona(Integer idPersona, String tipoDocumento, String nroDocumento,
+    public Persona(int idPersona, String tipoDocumento, String nroDocumento,
                    String appPaterno, String appMaterno, String nombre,
                    Date fechaNacimiento, String sexo, String telefono,
-                   String correo, String direccion, Boolean estado) {
+                   String correo, String direccion, boolean estado){
 
         this.idPersona = idPersona;
         this.tipoDocumento = tipoDocumento;
@@ -46,11 +45,11 @@ public class Persona {
         this.estado = estado;
     }
 
-    public Integer getIdPersona() {
+    public int getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(Integer idPersona) {
+    public void setIdPersona(int idPersona) {
         this.idPersona = idPersona;
     }
 
@@ -134,20 +133,27 @@ public class Persona {
         this.direccion = direccion;
     }
 
-    public Boolean getEstado() {
+    public boolean istEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }  
     
     //Metodos
      public void mostrarDatos() {
-
+        System.out.println("PERSONA");
+        System.out.println("ID: " + idPersona);
+        System.out.println("Nombre: " + nombre + " " + appPaterno + " " + appMaterno);
+        System.out.println("Documento: " + tipoDocumento + " - " + nroDocumento);
     }
 
     public int calcularEdad() {
-        return 0;
+        if (fechaNacimiento == null) return 0;
+        
+        Date hoy = new Date();
+        long diff = hoy.getTime() - fechaNacimiento.getTime();
+        return (int) (diff / (1000L * 60 * 60 * 24 * 365));
     }
 }

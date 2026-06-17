@@ -27,24 +27,22 @@ public class Compra {
 
     // Constructor vacío
     public Compra() {
-        this.detallesCompra = new ArrayList<>();
+         this.detallesCompra = new ArrayList<>();
     }
     
      // Constructor con parámetros
-    public Compra(int idCompra, Date fecha, double subtotal,
-                  double igv, double total, Proveedor proveedor) {
-
+    public Compra(int idCompra, Date fecha, Proveedor proveedor) {
         this.idCompra = idCompra;
         this.fecha = fecha;
-        this.subtotal = subtotal;
-        this.igv = igv;
-        this.total = total;
         this.proveedor = proveedor;
+
         this.detallesCompra = new ArrayList<>();
+        this.subtotal = 0; 
+        this.igv = 0;      
+        this.total = 0;   
     }
 
     // Getters y Setters
-
     public int getIdCompra() {
         return idCompra;
     }
@@ -103,27 +101,44 @@ public class Compra {
 
     // Métodos
     public void registrarCompra() {
-        // lógica de registro
+        calcularTotal();
+        System.out.println("Compra registrada correctamente");
     }
 
-    public double calcularTotal() {
-        this.total = this.subtotal + this.igv;
-        return this.total;
+    public void calcularTotal() {
+       subtotal = 0;
+       
+        if (detallesCompra != null) {
+
+            for (DetalleCompra d : detallesCompra) {
+                subtotal += d.getSubtotal();
+            }
+        }
+        igv = subtotal * 0.18;
+        total = subtotal + igv;
     }
+    
     public void mostrarCompra() {
-        System.out.println("ID Compra: " + idCompra);
-        System.out.println("Fecha: " + fecha);
-        System.out.println("Proveedor: " + (proveedor != null ? proveedor.getRazonSocial() : "N/A"));
-        System.out.println("Subtotal: " + subtotal);
-        System.out.println("IGV: " + igv);
-        System.out.println("Total: " + total);
+            System.out.println("COMPRA");
+            System.out.println("ID: " + idCompra);
+            System.out.println("Proveedor: " +
+                (proveedor != null ? proveedor.getRazonSocial() : "SIN PROVEEDOR"));
+            System.out.println("Subtotal: " + subtotal);
+            System.out.println("IGV (18%): " + igv);
+            System.out.println("Total: " + total);
     }
 
     public void agregarDetalle(DetalleCompra detalle) {
-        detallesCompra.add(detalle);
+        if (detallesCompra != null && detalle != null) {
+            detallesCompra.add(detalle);
+            calcularTotal();
+        }
     }
 
     public void eliminarDetalle(DetalleCompra detalle) {
-        detallesCompra.remove(detalle);
+        if (detallesCompra != null && detalle != null) {
+            detallesCompra.remove(detalle);
+            calcularTotal();
+        }
     }
 }

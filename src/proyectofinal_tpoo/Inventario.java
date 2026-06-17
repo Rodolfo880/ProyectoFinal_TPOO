@@ -11,7 +11,6 @@ import java.util.ArrayList;
  * @author USUARIO
  */
 public class Inventario {
-    
     // Atributos
     private int idInventario;
     private int cantidadProductos;
@@ -21,16 +20,17 @@ public class Inventario {
 
     // Constructor vacío
     public Inventario() {
-        productos = new ArrayList<>();
+        this.productos = new ArrayList<>();
     }
-    
-    public Inventario(int idInventario, int cantidadProductos, ArrayList<Producto> productos) {
-       this.idInventario = idInventario;
-       this.cantidadProductos = cantidadProductos;
-       this.productos = productos;
+
+    public Inventario(int idInventario, ArrayList<Producto> productos) {
+        this.idInventario = idInventario;
+        this.productos = productos;
     }
-    
-     public int getIdInventario() {
+
+
+    //S y G
+    public int getIdInventario() {
         return idInventario;
     }
 
@@ -39,11 +39,7 @@ public class Inventario {
     }
 
     public int getCantidadProductos() {
-        return cantidadProductos;
-    }
-
-    public void setCantidadProductos(int cantidadProductos) {
-        this.cantidadProductos = cantidadProductos;
+        return productos.size();
     }
 
     public ArrayList<Producto> getProductos() {
@@ -55,19 +51,42 @@ public class Inventario {
     }
     
     //metodos
-    public void agregarProducto() {
+    public void agregarProducto(Producto p) {
+        if (p != null) {
+            productos.add(p);
+            System.out.println("Producto agregado: " + p.getNomProducto());
+        }
     }
 
-    public void eliminarProducto() {
+    public void eliminarProducto(Producto p) {
+        if (p != null) { 
+            productos.remove(p);
+            System.out.println("Producto eliminado: " + p.getNomProducto());
+        }
     }
 
-    public Producto buscarProducto() {
+    public Producto buscarProducto(String nombre) {
+        for (Producto p : productos) {
+            if (p.getNomProducto().equalsIgnoreCase(nombre)) {
+                return p;
+            }
+        }
         return null;
     }
 
     public void listarProductos() {
+         System.out.println("INVENTARIO");
+
+        for (Producto p : productos) {
+            System.out.println(p.getNomProducto() + " - Stock: " + p.getStock());
+        }
     }
 
     public void verificarStock() {
+        for (Producto p : productos) {
+            if (p.getStock() <= p.getStockMinimo()) {
+                System.out.println("STOCK BAJO: " + p.getNomProducto());
+            }
+        }
     }
 }

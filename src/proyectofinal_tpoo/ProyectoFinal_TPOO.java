@@ -4,6 +4,10 @@
  */
 package proyectofinal_tpoo;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.sql.Time;
+
 /**
  *
  * @author USUARIO
@@ -15,5 +19,7 @@ public class ProyectoFinal_TPOO {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+         System.out.println("Sistema iniciado correctamente");
+         
     }
 }

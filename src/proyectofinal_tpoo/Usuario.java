@@ -11,28 +11,28 @@ package proyectofinal_tpoo;
 public class Usuario {
     private int idUsuario;
     private String nombreUsuario;
-    private String contraseña;
+    private String contrasena;
     private String rol;
-    private Boolean estado;
+    private boolean estado;
 
     public Usuario() {
     }
     
-    public Usuario(Integer idUsuario, String nombreUsuario, String contraseña,
-                   String rol, Boolean estado) {
+    public Usuario(int idUsuario, String nombreUsuario, String contrasena,
+                   String rol, boolean estado) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.rol = rol;
         this.estado = estado;
     }
     
      // Getters y Setters
-    public Integer getIdUsuario() {
+    public int getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
+    public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -44,12 +44,12 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getRol() {
@@ -60,18 +60,18 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public Boolean getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
      //metodos
     public void iniciarSesion(){
-        
+        System.out.println("Usuario iniciando sesión: " + nombreUsuario);
     }
     public void cerrarSesion(){
-        
+        System.out.println("Sesión cerrada: " + nombreUsuario);
     }
 }

@@ -101,12 +101,42 @@ public class Venta {
 
     // Métodos
     public void registrarVenta() {
+         System.out.println("Venta registrada correctamente con ID: " + idVenta);
     }
 
     public double calcularTotal() {
-        return 0;
+        subtotal = 0;
+
+        for (DetalleVenta d : detallesVenta) {
+            subtotal += d.getSubtotal(); 
+        }
+
+        igv = subtotal * 0.18;
+        total = subtotal + igv;
+
+        return total;
     }
     
     public void imprimirVenta() {
+        System.out.println("IMPRIMIR VENTA");
+        System.out.println("ID: " + idVenta);
+        System.out.println("Subtotal: " + subtotal);
+        System.out.println("IGV: " + igv);
+        System.out.println("Total: " + total);
+
+        System.out.println("\nDETALLES:");
+
+        for (DetalleVenta d : detallesVenta) {
+            d.mostrarDetalle();
+        }
     }
+    
+    public void agregarDetalle(DetalleVenta detalle) {
+    if (detalle != null) {
+            detallesVenta.add(detalle);
+            System.out.println("Detalle agregado correctamente");
+        } else {
+            System.out.println("Error: detalle vacío");
+        }
+    }   
 }

@@ -16,11 +16,13 @@ public class Proveedor extends Persona{
     private String contacto;
     
     public Proveedor() {
+        super();
     }
     
     // Constructor con parámetros
+     public Proveedor(String ruc, String razonSocial, String correoEmpresa,
+                     String telefonoEmpresa, String contacto) {
 
-    public Proveedor(String ruc, String razonSocial, String correoEmpresa, String telefonoEmpresa, String contacto) {
         this.ruc = ruc;
         this.razonSocial = razonSocial;
         this.correoEmpresa = correoEmpresa;
@@ -72,11 +74,30 @@ public class Proveedor extends Persona{
     
     // Métodos
     public void registrarProveedor() {
+        if (razonSocial != null && !razonSocial.isEmpty()) {
+            System.out.println("Proveedor registrado: " + razonSocial);
+        } else {
+            System.out.println("Error: razón social vacía");
+        }
     }
 
     public void actualizarProveedor() {
+        if (ruc != null && !ruc.isEmpty()) {
+            System.out.println("Proveedor actualizado: " + razonSocial);
+        } else {
+            System.out.println("Error: proveedor no válido");
+        }
     }
 
     public void consultarProveedor() {
+        if (razonSocial != null) {
+            System.out.println("PROVEEDOR");
+            System.out.println("RUC: " + ruc);
+            System.out.println("Razón Social: " + razonSocial);
+            System.out.println("Contacto: " + contacto);
+            System.out.println("Teléfono: " + telefonoEmpresa);
+        } else {
+            System.out.println("Proveedor no registrado");
+        }
     }
 }
