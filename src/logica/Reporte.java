@@ -20,7 +20,7 @@ public class Reporte {
 
     // Asociación 1 a 1 con Inventario
     private Inventario inventario;
-    private Administrador administrador;
+    private Empleado empleado;
     private ArrayList<Venta> ventas;
     
     public Reporte() { this.ventas = new ArrayList<>();}
@@ -35,16 +35,16 @@ public class Reporte {
         this.inventario = inventario;
         this.ventas = new ArrayList<>();
     }
-
+   
     // Getters y Setters
-    
-    public Administrador getAdministrador() {
-        return administrador;
+    public Empleado getEmpleado() {
+        return empleado;
     }
 
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
+    public void setEmpleado(Empleado empleado) {    
+        this.empleado = empleado;
     }
+
     public int getIdReporte() {
         return idReporte;
     }
@@ -101,7 +101,7 @@ public class Reporte {
         }
     }
     public void reporteVentas() {
-        System.out.println("===== REPORTE DE VENTAS =====");
+        System.out.println("REPORTE DE VENTAS");
 
         for (Venta v : ventas) {
             System.out.println("Venta ID: " + v.getIdVenta() +
@@ -122,12 +122,9 @@ public class Reporte {
     }
     
     public void visualizarReporte() {
-        System.out.println("REPORTE");
-        System.out.println("ID: " + idReporte);
-        System.out.println("Tipo: " + tipoReporte);
-
-        if (administrador != null) {
-            System.out.println("Generado por: " + administrador.getNombre());
+        if (empleado != null) {
+            System.out.println("Generado por: " + empleado.getNombre());
+            System.out.println("Cargo: " + empleado.getCargo());
         }
     }
 }

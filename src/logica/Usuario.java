@@ -10,6 +10,7 @@ package logica;
  */
 public class Usuario {
     private int idUsuario;
+    private int idEmpleado;
     private String nombreUsuario;
     private String contrasena;
     private String rol;
@@ -67,6 +68,15 @@ public class Usuario {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+    
      //metodos
     public void iniciarSesion(){
         System.out.println("Usuario iniciando sesión: " + nombreUsuario);

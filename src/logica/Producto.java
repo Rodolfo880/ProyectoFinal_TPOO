@@ -4,6 +4,8 @@
  */
 package logica;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author USUARIO
@@ -93,39 +95,33 @@ public class Producto {
     
       // Métodos
     public void registrar() {
-        if (nomProducto != null && !nomProducto.isEmpty()) {
-            System.out.println("Producto registrado: " + nomProducto);
-        } else {
-            System.out.println("Error: nombre de producto vacío");
-        }
+        System.out.println("Producto registrado: " + nomProducto);
     }
 
     public void actualizar() {
-        if (idProducto > 0) {
-            System.out.println("Producto actualizado: " + nomProducto);
-        } else {
-            System.out.println("Error: producto no válido para actualizar");
-        }
+        System.out.println("Producto actualizado: " + nomProducto);
     }
 
     public void eliminar() {
-        if (idProducto > 0) {
-            System.out.println("Producto eliminado: " + nomProducto);
-        } else {
-            System.out.println("Error: no se puede eliminar");
-        }
+        System.out.println("Producto eliminado: " + nomProducto);
     }
 
-    public boolean buscar(String nombreBuscado) {
-        if (nomProducto == null) return false;
-        return nomProducto.equalsIgnoreCase(nombreBuscado);
-    }
-    
-    public void actualizarStock(int cantidad) {
-        this.stock += cantidad;
-        if (this.stock < 0) {
-            this.stock = 0;
+    public Producto buscar(int id, ArrayList<Producto> lista) {
+
+    for (Producto p : lista) {
+        if (p.getIdProducto() == id) {
+            return p;
         }
+    }
+    return null;
+}
+
+    public void actualizarStock(int cantidad) {
+        this.stock = this.stock + cantidad;
         System.out.println("Stock actualizado: " + stock);
+    }
+    @Override
+    public String toString() {
+        return nomProducto + " - " + marca;
     }
 }
