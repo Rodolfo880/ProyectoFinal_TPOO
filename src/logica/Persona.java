@@ -14,8 +14,8 @@ public class Persona {
     protected int idPersona;
     protected String tipoDocumento;
     protected String nroDocumento;
-    protected String appPaterno;
-    protected String appMaterno;
+    protected String apPaterno;
+    protected String apMaterno;
     protected String nombre;
     protected Date fechaNacimiento;
     protected String sexo;
@@ -34,8 +34,8 @@ public class Persona {
         this.idPersona = idPersona;
         this.tipoDocumento = tipoDocumento;
         this.nroDocumento = nroDocumento;
-        this.appPaterno = appPaterno;
-        this.appMaterno = appMaterno;
+        this.apPaterno = appPaterno;
+        this.apMaterno = appMaterno;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
@@ -70,19 +70,19 @@ public class Persona {
     }
 
     public String getAppPaterno() {
-        return appPaterno;
+        return apPaterno;
     }
 
     public void setAppPaterno(String appPaterno) {
-        this.appPaterno = appPaterno;
+        this.apPaterno = appPaterno;
     }
 
     public String getAppMaterno() {
-        return appMaterno;
+        return apMaterno;
     }
 
     public void setAppMaterno(String appMaterno) {
-        this.appMaterno = appMaterno;
+        this.apMaterno = appMaterno;
     }
 
     public String getNombre() {
@@ -133,7 +133,7 @@ public class Persona {
         this.direccion = direccion;
     }
 
-    public boolean istEstado() {
+    public boolean isEstado() {
         return estado;
     }
 
@@ -145,7 +145,7 @@ public class Persona {
      public void mostrarDatos() {
         System.out.println("PERSONA");
         System.out.println("ID: " + idPersona);
-        System.out.println("Nombre: " + nombre + " " + appPaterno + " " + appMaterno);
+        System.out.println("Nombre: " + nombre + " " + apPaterno + " " + apMaterno);
         System.out.println("Documento: " + tipoDocumento + " - " + nroDocumento);
     }
 

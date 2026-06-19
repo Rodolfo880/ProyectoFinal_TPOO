@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package igu;
-import persistencia.Conexion;
+import Conexion.Conexion;
 /**
  *
  * @author USUARIO
@@ -19,7 +19,9 @@ public class ProyectoFinal_TPOO {
         usu.setLocationRelativeTo(null);
         usu.setVisible(true);
         
-          
-        Conexion.conectar();
+       
+        //Conexion
+        Conexion con = new Conexion();
+        con.getConexion();
     }
 }

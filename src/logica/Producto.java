@@ -19,25 +19,23 @@ public class Producto {
     private double precioVenta;
     private int stock;
     private int stockMinimo;
+    private int idCategoria;
 
      public Producto() {}
     // Constructor con parámetros
-     
-    public Producto(int idProducto, String nomProducto, String marca,
-                    double precioCompra, double precioVenta,
-                    int stock, int stockMinimo) {
 
+    public Producto(int idProducto, String nomProducto, String marca, double precioCompra, 
+        double precioVenta, int stock, int stockMinimo, int idCategoria) {
         this.idProducto = idProducto;
         this.nomProducto = nomProducto;
-        this.marca = marca;
+        this.marca = marca;    
         this.precioCompra = precioCompra;
         this.precioVenta = precioVenta;
         this.stock = stock;
         this.stockMinimo = stockMinimo;
+        this.idCategoria = idCategoria;
     }
-
-    //G y S
-    public int getIdProducto() {
+    public int getIdProducto() {    
         return idProducto;
     }
 
@@ -92,34 +90,29 @@ public class Producto {
     public void setStockMinimo(int stockMinimo) {
         this.stockMinimo = stockMinimo;
     }
-    
-      // Métodos
-    public void registrar() {
-        System.out.println("Producto registrado: " + nomProducto);
+
+    public int getIdCategoria() {
+        return idCategoria;
     }
 
-    public void actualizar() {
-        System.out.println("Producto actualizado: " + nomProducto);
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
-    public void eliminar() {
-        System.out.println("Producto eliminado: " + nomProducto);
-    }
-
+    // Métodos
     public Producto buscar(int id, ArrayList<Producto> lista) {
-
-    for (Producto p : lista) {
-        if (p.getIdProducto() == id) {
-            return p;
+        for (Producto p : lista) {
+            if (p.getIdProducto() == id) {
+                return p;
+            }
         }
+        return null;
     }
-    return null;
-}
 
     public void actualizarStock(int cantidad) {
-        this.stock = this.stock + cantidad;
-        System.out.println("Stock actualizado: " + stock);
+        this.stock += cantidad;
     }
+
     @Override
     public String toString() {
         return nomProducto + " - " + marca;

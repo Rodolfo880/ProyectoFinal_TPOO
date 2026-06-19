@@ -9,7 +9,6 @@ package igu;
  * @author USUARIO
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaPrincipal.class.getName());
 
     /**
@@ -17,6 +16,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -28,16 +29,16 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        MenusPane = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
         jMenu9 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
         jMenu11 = new javax.swing.JMenu();
+        menuProducto = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu12 = new javax.swing.JMenu();
         jMenu13 = new javax.swing.JMenu();
@@ -49,18 +50,19 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 566, Short.MAX_VALUE)
+        javax.swing.GroupLayout MenusPaneLayout = new javax.swing.GroupLayout(MenusPane);
+        MenusPane.setLayout(MenusPaneLayout);
+        MenusPaneLayout.setHorizontalGroup(
+            MenusPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 456, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        MenusPaneLayout.setVerticalGroup(
+            MenusPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 348, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Mantenimiento");
+        jMenu1.addActionListener(this::jMenu1ActionPerformed);
 
         jMenu5.setText("Empleado");
         jMenu1.add(jMenu5);
@@ -69,10 +71,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenu6);
 
         jMenu7.setText("Proveedor");
+        jMenu7.addActionListener(this::jMenu7ActionPerformed);
         jMenu1.add(jMenu7);
-
-        jMenu8.setText("Producto");
-        jMenu1.add(jMenu8);
 
         jMenu9.setText("Categoria");
         jMenu1.add(jMenu9);
@@ -82,6 +82,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         jMenu11.setText("Usuario");
         jMenu1.add(jMenu11);
+
+        menuProducto.setText("Producto");
+        menuProducto.addActionListener(this::menuProductoActionPerformed);
+        jMenu1.add(menuProducto);
 
         jMenuBar1.add(jMenu1);
 
@@ -117,17 +121,35 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MenusPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MenusPane)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu7ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void menuProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProductoActionPerformed
+        // TODO add your handling code here:
+        ProductoIF producto = new ProductoIF();
+        
+        MenusPane.add(producto);
+        producto.setVisible(true);
+        producto.toFront();
+    }//GEN-LAST:event_menuProductoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane MenusPane;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
@@ -142,9 +164,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem menuProducto;
     // End of variables declaration//GEN-END:variables
 }
